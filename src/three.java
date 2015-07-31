@@ -11,13 +11,15 @@ public class three {
     String suites = "SHCD";
     String rank = "123456789TJQK";
     TreeMap<String, Integer> naturalSequencesOfLengthThree = new TreeMap<String, Integer>();
+    TreeMap<String, Integer> naturalSequencesOfLengthFour = new TreeMap<String, Integer>();
+    TreeMap<String, Integer> naturalSequencesOfLengthFive = new TreeMap<String, Integer>();
 final int CARDSINSUITE = 13;
     public String addLeadingZero(int i) {
         String withLeadingZero = "00" + String.valueOf(i);
         return withLeadingZero.substring(withLeadingZero.length() - 2);
     }
 
-    public void generateNaturalSequencesOfLengthThree(int i){
+    public TreeMap<String,Integer> generateNaturalSequencesOfLengthThree(int i){
         int j = i+1;
         String sequence;
         if (j % 13 == 0) {
@@ -29,8 +31,9 @@ final int CARDSINSUITE = 13;
             sequence = addLeadingZero(i) + "|" + addLeadingZero(i + 1) + "|" +addLeadingZero(i + 2) + "|";
         }
         naturalSequencesOfLengthThree.put(sequence, 3);
+        return naturalSequencesOfLengthThree;
     }
-    public void generateNaturalSequencesOfLengthFour(int i){
+    public TreeMap<String,Integer> generateNaturalSequencesOfLengthFour(int i){
         String sequence;
         if((i+2)%13==0){
             //JQKA
@@ -47,9 +50,10 @@ final int CARDSINSUITE = 13;
             //regular insertion
             sequence = addLeadingZero(i) + "|" +addLeadingZero(i+1) + "|" +addLeadingZero(i + 2) + "|"+addLeadingZero(i + 3)+"|";
         }
-        naturalSequencesOfLengthThree.put(sequence, 3);
+        naturalSequencesOfLengthFour.put(sequence, 3);
+        return naturalSequencesOfLengthFour;
     }
-    public void generateNaturalSequencesOfLengthFive(int i){
+    public TreeMap<String,Integer> generateNaturalSequencesOfLengthFive(int i){
         String sequence;
         if((i+3)%13==0){
             //10JQKA
@@ -71,7 +75,8 @@ final int CARDSINSUITE = 13;
             //regular insertion
             sequence = addLeadingZero(i) + "|" +addLeadingZero(i+1) + "|" +addLeadingZero(i + 2) + "|"+addLeadingZero(i + 3)+"|"+addLeadingZero(i + 4)+"|";
         }
-        naturalSequencesOfLengthThree.put(sequence, 3);
+        naturalSequencesOfLengthFive.put(sequence, 3);
+        return naturalSequencesOfLengthFive;
     }
 
     public static void main(String args[]) {
@@ -79,9 +84,9 @@ final int CARDSINSUITE = 13;
 
         for (int i = 1; i <= 52; i++) {
 
-            threeOne.generateNaturalSequencesOfLengthThree(i);
-            threeOne.generateNaturalSequencesOfLengthFour(i);
-            threeOne.generateNaturalSequencesOfLengthFive(i);
+           TreeMap<String,Integer> naturalSequencesOfLengthThree = threeOne.generateNaturalSequencesOfLengthThree(i);
+           TreeMap<String,Integer> naturalSequencesofLengthFour = threeOne.generateNaturalSequencesOfLengthFour(i);
+            TreeMap<String,Integer> naturalSequencesOfLengthFive = threeOne.generateNaturalSequencesOfLengthFive(i);
 
         }
 
