@@ -105,27 +105,32 @@ public class Set {
         }
         
     }
-    public TreeMap<String,Integer> getAllSet()
+    
+    public TreeMap<String,Integer> getlength3set()
     {
         TreeMap<String,Integer> results = new TreeMap<String,Integer>();
-    //   
         getSetofLengthN(results,3);
+        getNaturalset(results);
+        return results;
+    }
+    public TreeMap<String,Integer> getlength4set()
+    {
+        TreeMap<String,Integer> results = new TreeMap<String,Integer>();
         getSetofLengthN(results,4);
+        removeUnusedEntry(results);
+        return results;
+    }
+    public TreeMap<String,Integer> getlength5set()
+    {
+        TreeMap<String,Integer> results = new TreeMap<String,Integer>();
         getSetofLengthN(results,5);
         removeUnusedEntry(results);
-        getNaturalset(results);
-        
-        Iterator it = results.entrySet().iterator();
-    while (it.hasNext()) {
-        Map.Entry pair = (Map.Entry)it.next();
-        System.out.println(pair.getKey() + " = " + pair.getValue());
-    }
-    return results;
+        return results;
     }
     
     public static void main (String[] args)
     {
         Set s= new Set();
-        s.getAllSet();
+
     }
 }
