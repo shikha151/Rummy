@@ -110,6 +110,7 @@ public class Set {
     {
         TreeMap<String,Integer> results = new TreeMap<String,Integer>();
         getSetofLengthN(results,3);
+        getNaturalset(results);
         return results;
     }
     public TreeMap<String,Integer> getlength4set()
