@@ -87,7 +87,6 @@ final int CARDSINSUITE = 13;
            TreeMap<String,Integer> naturalSequencesOfLengthThree = threeOne.generateNaturalSequencesOfLengthThree(i);
            TreeMap<String,Integer> naturalSequencesofLengthFour = threeOne.generateNaturalSequencesOfLengthFour(i);
             TreeMap<String,Integer> naturalSequencesOfLengthFive = threeOne.generateNaturalSequencesOfLengthFive(i);
-
         }
 
 
