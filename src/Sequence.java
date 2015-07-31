@@ -1,3 +1,4 @@
+package rummygame;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.TreeMap;
@@ -7,7 +8,7 @@ import java.util.TreeMap;
  */
 
 
-public class three {
+public class Sequence {
     String suites = "SHCD";
     String rank = "123456789TJQK";
     TreeMap<String, Integer> naturalSequencesOfLengthThree = new TreeMap<String, Integer>();
@@ -19,7 +20,7 @@ final int CARDSINSUITE = 13;
         return withLeadingZero.substring(withLeadingZero.length() - 2);
     }
 
-    public TreeMap<String,Integer> generateNaturalSequencesOfLengthThree(int i){
+    public void generateNaturalSequencesOfLengthThree(int i){
         int j = i+1;
         String sequence;
         if (j % 13 == 0) {
@@ -31,9 +32,8 @@ final int CARDSINSUITE = 13;
             sequence = addLeadingZero(i) + "|" + addLeadingZero(i + 1) + "|" +addLeadingZero(i + 2) + "|";
         }
         naturalSequencesOfLengthThree.put(sequence, 3);
-        return naturalSequencesOfLengthThree;
     }
-    public TreeMap<String,Integer> generateNaturalSequencesOfLengthFour(int i){
+    public void generateNaturalSequencesOfLengthFour(int i){
         String sequence;
         if((i+2)%13==0){
             //JQKA
@@ -51,9 +51,8 @@ final int CARDSINSUITE = 13;
             sequence = addLeadingZero(i) + "|" +addLeadingZero(i+1) + "|" +addLeadingZero(i + 2) + "|"+addLeadingZero(i + 3)+"|";
         }
         naturalSequencesOfLengthFour.put(sequence, 3);
-        return naturalSequencesOfLengthFour;
     }
-    public TreeMap<String,Integer> generateNaturalSequencesOfLengthFive(int i){
+    public void generateNaturalSequencesOfLengthFive(int i){
         String sequence;
         if((i+3)%13==0){
             //10JQKA
@@ -76,20 +75,32 @@ final int CARDSINSUITE = 13;
             sequence = addLeadingZero(i) + "|" +addLeadingZero(i+1) + "|" +addLeadingZero(i + 2) + "|"+addLeadingZero(i + 3)+"|"+addLeadingZero(i + 4)+"|";
         }
         naturalSequencesOfLengthFive.put(sequence, 3);
+    }
+
+    public TreeMap<String,Integer> getSequencelength3()
+    {
+        for(int i =1;i<=52;i++)
+        {
+            generateNaturalSequencesOfLengthThree(i);
+        }
+        return naturalSequencesOfLengthThree;
+    }
+    public TreeMap<String,Integer> getSequencelength4()
+    {
+        for(int i =1;i<=52;i++)
+        {
+            generateNaturalSequencesOfLengthFour(i);
+        }
+        return naturalSequencesOfLengthFour;
+    }
+    public TreeMap<String,Integer> getSequencelength5()
+    {
+        for(int i =1;i<=52;i++)
+        {
+            generateNaturalSequencesOfLengthFive(i);
+        }
         return naturalSequencesOfLengthFive;
     }
 
-    public static void main(String args[]) {
-        three threeOne = new three();
 
-        for (int i = 1; i <= 52; i++) {
-
-           TreeMap<String,Integer> naturalSequencesOfLengthThree = threeOne.generateNaturalSequencesOfLengthThree(i);
-           TreeMap<String,Integer> naturalSequencesofLengthFour = threeOne.generateNaturalSequencesOfLengthFour(i);
-            TreeMap<String,Integer> naturalSequencesOfLengthFive = threeOne.generateNaturalSequencesOfLengthFive(i);
-        }
-
-
-        System.out.println(threeOne.naturalSequencesOfLengthThree);
-    }
 }
