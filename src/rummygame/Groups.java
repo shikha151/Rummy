@@ -5,6 +5,7 @@
  */
 package rummygame;
 
+import java.util.Set;
 import java.util.TreeMap;
 
 /**
@@ -15,7 +16,7 @@ public class Groups {
     
     public TreeMap<String,Integer> getGrouplength3()
     {
-        Set s =new Set();
+        rummygame.Set s= new rummygame.Set();
         Sequence t = new Sequence();
         TreeMap<String,Integer> results = new TreeMap<String,Integer>();
         results = s.getlength3set();
@@ -25,7 +26,7 @@ public class Groups {
     }
     public TreeMap<String,Integer> getGrouplength4()
     {
-        Set s =new Set();
+        rummygame.Set s= new rummygame.Set();
         Sequence t = new Sequence();
         TreeMap<String,Integer> results = new TreeMap<String,Integer>();
         results = s.getlength4set();
@@ -35,12 +36,19 @@ public class Groups {
     }
     public TreeMap<String,Integer> getGrouplength5()
     {
-        Set s =new Set();
+        rummygame.Set s= new rummygame.Set();
         Sequence t = new Sequence();
         TreeMap<String,Integer> results = new TreeMap<String,Integer>();
         results = s.getlength5set();
         results.putAll(t.getSequencelength5());
         
         return results;
+    }
+
+
+    public static void  main(String args[]){
+        Groups gg = new Groups();
+        TreeMap<String,Integer> map = gg.getGrouplength3();
+        System.out.println(map);
     }
 }
