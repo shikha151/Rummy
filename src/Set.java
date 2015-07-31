@@ -40,8 +40,7 @@ public class Set {
             result.put(generateKeyString(i,3),4);
         }   
     }
-    
-    private void generateCombinations(TreeMap<String,Integer> result,ArrayList<Integer> arrayset,int size)
+     private void generateCombinationsfinal(TreeMap<String,Integer> result,ArrayList<Integer> arrayset,int size)
     {
         CombinationMaker cm =  new CombinationMaker(arrayset.size(),size);
         while (cm.hasNext())
@@ -73,20 +72,33 @@ public class Set {
         }
     }
     
+    private void generateCombinations(TreeMap<String,Integer> result,ArrayList<Integer> arrayset,int size)
+    {
+        String temp = "";
+        for(int i:arrayset)
+        {
+            if(i<10)
+                temp+="0"+i+"|";
+            else
+                temp+=i+"|";   
+        }
+        result.put(temp, 1);
+        
+    }
+    
     private void getSetofLengthN(TreeMap<String,Integer> result,int size)
     {
         ArrayList<Integer> arrayset = new ArrayList<Integer>();
         for(int i= 1 ;i <=13; i++)
         {
-            for(int j=0;j<3;j++)
-            {
+            
                 arrayset.add(i);
                 arrayset.add(i+13);
                 arrayset.add(i+26);
                 arrayset.add(i+39);
-            }
             
-            generateCombinations(result,arrayset,size);
+            
+            generateCombinationsfinal(result,arrayset,size);
             
             arrayset.clear();
         }
@@ -131,6 +143,6 @@ public class Set {
     public static void main (String[] args)
     {
         Set s= new Set();
-
+        System.out.println(s.getlength3set());
     }
 }
