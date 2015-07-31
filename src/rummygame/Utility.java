@@ -79,22 +79,47 @@ public class Utility {
 	}
 
 	public static void main(String[] args) {
-		TreeMap<String, Integer> groupOf3 = new TreeMap<String, Integer>();
-		TreeMap<String, Integer> groupOf4 = new TreeMap<String, Integer>();
-		TreeMap<String, Integer> validRummyDeclares = new TreeMap<String, Integer>();
+		Groups group = new Groups();
+		TreeMap<String, Integer> groupOf3 = group.getGrouplength3();
+		TreeMap<String, Integer> groupOf4 = group.getGrouplength4();
+		TreeMap<String, Integer> groupOf5 = group.getGrouplength5();
+		
+		String  input = "05|24|41|20|24|07|29|38|42|28|22|37|16|";
+		input = piecewiseSort(input);
+		int minCardsToDeclare = 11;
 		for (Map.Entry<String, Integer> i : groupOf4.entrySet()) {
 			for (Map.Entry<String, Integer> j : groupOf3.entrySet()) {
 				for (Map.Entry<String, Integer> k : groupOf3.entrySet()) {
 					for (Map.Entry<String, Integer> l : groupOf3.entrySet()) {
-						String hopefulDeclare = i.getKey() + j.getKey() + k.getKey() + l.getKey();
-						if (sanityCheck(hopefulDeclare))
-						{
-							
+						String hopefulDeclare = i.getKey() + j.getKey()
+								+ k.getKey() + l.getKey();
+						if (sanityCheck(hopefulDeclare)) {
+							int numOfSeq = 0;
+							if (i.getValue() >= 3) {
+								numOfSeq++;
+							}
+							if (j.getValue() >= 3) {
+								numOfSeq++;
+							}
+							if (k.getValue() >= 3) {
+								numOfSeq++;
+							}
+							if (l.getValue() >= 3) {
+								numOfSeq++;
+							}
+							if (numOfSeq >= 2) {
+								String sortedHopefulDeclare = piecewiseSort(hopefulDeclare);
+								if(minCardsToDeclare > getDifference(input,sortedHopefulDeclare))
+								{
+									minCardsToDeclare = getDifference(input,sortedHopefulDeclare);
+								}
+							}
 						}
 					}
 				}
 			}
 		}
+	
 	}
 
 }
